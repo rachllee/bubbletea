@@ -1,7 +1,9 @@
+'''
 import os
 from pyicloud import PyiCloudService
 from datetime import datetime, timezone, timedelta
 import subprocess
+
 
 api = PyiCloudService('r8chel18164@gmail.com')
 date_modified = api.drive['bubbletea']['orders.txt'].date_modified
@@ -23,13 +25,16 @@ def convert_to_full_month(month_num):
     }
     return months.get(month_num, 'Invalid Month')
 
+
+
 date_modified_est = date_modified.astimezone(timezone(timedelta(hours=-5)))
-month_num = date_modified_est.month
+month_num = date_modified_est.strftime('%m')
 
 month = convert_to_full_month(month_num)
-day = date_modified_est.day
-year = date_modified_est.year
+day = str(date_modified_est.day)
+year = str(date_modified_est.year)
 
 time = date_modified_est.strftime('%Y-%m-%d %I:%M:%S %p')
 
 subprocess.run(['python3', 'calc.py', month, day, year, time])
+

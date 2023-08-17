@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>rachel's boba consumption</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>rachel's boba stats</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Roboto:ital,wght@1,300&family=Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type= text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     
 
     <body>
+        <div class = "title">
+            <h1>rachel's bubble tea stats</h1>
+        </div>
+        
+        <!--
         <div class = "lastupdate">
             <p class = "update-label">last updated</p>
             <p class = "update">on {{ month }} {{ day }}, {{ year }} at {{ time }}</p>
         </div>
-        <div class = "totals">
+         -->
+        <div class = "stats">
             <p class = "total-label">total bobas consumed since Jan 1, 2021: </p>
-            <p class = "total-num">{{ total_orders }}</p>
+            <p class = "total-num">{{ stats.total_orders }}</p>
+            <p class = "2023">total bobas consumed in 2023 so far:</p>
+            <p class = "2023-num">{{ stats.orders_23 }}</p>
+            <p class = "mango">percentage of boba consumed with mango popping bubbles: </p>
+            <p class = "mango-num">{{ stats.orders_with_mpopping / stats.total_orders * 100 }}%</p>
+            <p class = "ratio">percentage of mango flavored popping bubbles given that order contained popping bubbles:</p>
+            <p class = "ratio-num">{{ stats.orders_with_mpopping / stats.orders_with_popping *100 }}%</p>
+            <p class = "frequent">most frequented bubble tea store to date:</p>
+            <p class = "frequent-num">{{ stats.most_frequented_store }}</p>
         </div>
     </body>
 </html>

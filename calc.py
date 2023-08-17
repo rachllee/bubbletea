@@ -1,13 +1,9 @@
-from flask import Flask, render_template
 import pandas as pd
+from flask import render_template
 
-app = Flask(__name__)
-df = pd.read_pickle('bubble_tea_data.pkl')
-
-from icloud_sync import date_modified
-
-@app.route('/')
-def index():
+def calculate_statistics():
+    df = pd.read_pickle('bubble_tea_data.pkl')
+    
     total_orders = df.shape[0]
 
     #Topping related numbers
@@ -49,44 +45,50 @@ def index():
     orders_teado = df['Store'].str.contains('Tea Do|Tea-Do', case=False, na=False).sum()
     orders_sharetea = df['Store'].str.contains('Share', case=False, na=False).sum()
 
-    return render_template('index.html',
-                            total_orders=total_orders,
-                            orders_with_popping=orders_with_popping,
-                            orders_with_mpopping=orders_with_mpopping,
-                            orders_with_jelly=orders_with_jelly,
-                            orders_with_tapioca=orders_with_tapioca,
-                            orders_with_notopping=orders_with_notopping,
-                            orders_january=orders_january,
-                            orders_february=orders_february,
-                            orders_march=orders_march,
-                            orders_april=orders_april,
-                            orders_may=orders_may,
-                            orders_june=orders_june,
-                            orders_july=orders_july,
-                            orders_august=orders_august,
-                            orders_september=orders_september,
-                            orders_october=orders_october,
-                            orders_november=orders_november,
-                            orders_december=orders_december,
-                            orders_21=orders_21,
-                            orders_22=orders_22,
-                            orders_23=orders_23,
-                            orders_wk1=orders_wk1,
-                            orders_wk2=orders_wk2,
-                            orders_wk3=orders_wk3,
-                            orders_wk4=orders_wk4,
-                            orders_kungfu=orders_kungfu,
-                            orders_moose=orders_moose,
-                            orders_ding=orders_ding,
-                            orders_teagather=orders_teagather,
-                            orders_teado=orders_teado,
-                            orders_sharetea=orders_sharetea,
-                            month=month,
-                            day=day,
-                            year=year,
-                            time=time,
-                            )
+    store_orders = {
+        'Moose': orders_moose,
+        'Ding': orders_ding,
+        'Tea Gather': orders_teagather,
+        'Tea Do': orders_teado,
+        'Sharetea': orders_sharetea
+    }
 
+    most_frequented_store = max(store_orders, key=store_orders.get)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    print("Total orders:", total_orders)
+
+    return {
+                            'total_orders': total_orders,
+                            'orders_with_popping': orders_with_popping,
+                            'orders_with_mpopping': orders_with_mpopping,
+                            'orders_with_jelly': orders_with_jelly,
+                            'orders_with_tapioca': orders_with_tapioca,
+                            'orders_with_notopping': orders_with_notopping,
+                            'orders_january': orders_january,
+                            'orders_february': orders_february,
+                            'orders_march': orders_march,
+                            'orders_april': orders_april,
+                            'orders_may': orders_may,
+                            'orders_june': orders_june,
+                            'orders_july': orders_july,
+                            'orders_august': orders_august,
+                            'orders_september': orders_september,
+                            'orders_october': orders_october,
+                            'orders_november': orders_november,
+                            'orders_december': orders_december,
+                            'orders_21': orders_21,
+                            'orders_22': orders_22,
+                            'orders_23': orders_23,
+                            'orders_wk1': orders_wk1,
+                            'orders_wk2': orders_wk2,
+                            'orders_wk3': orders_wk3,
+                            'orders_wk4': orders_wk4,
+                            'orders_kungfu': orders_kungfu,
+                            'orders_moose': orders_moose,
+                            'orders_ding': orders_ding,
+                            'orders_teagather': orders_teagather,
+                            'orders_teado': orders_teado,
+                            'orders_sharetea': orders_sharetea,
+                            'most_frequented_store': most_frequented_store
+    }
+

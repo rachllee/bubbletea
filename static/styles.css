@@ -1,0 +1,35 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #EADFDD
+}
+
+.title {
+    font-family: 'Inconsolata', monospace;
+    font-size: 30px;
+    margin: 25px;
+    width: 600px;
+    height: 200px;
+    outline: dashed 1px black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stats {
+    font-family: 'Inconsolata', monospace;
+    font-size: 10px;
+    margin: 25px;
+    width: 350px;
+    height: 200px;
+    text-align: center;
+}
+
+.raw-button {
+    font-family: 'Inconsolata', monospace;
+    font-size: 10px;
+    color: #fff;
+}
+
