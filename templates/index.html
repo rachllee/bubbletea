@@ -13,7 +13,7 @@
         <div class = "title">
             <h1>rachel's bubble tea stats</h1>
         </div>
-        
+        <a href="orders.txt" class = "button">See the raw data!</a>
         <!--
         <div class = "lastupdate">
             <p class = "update-label">last updated</p>
@@ -21,16 +21,18 @@
         </div>
          -->
         <div class = "stats">
-            <p class = "total-label">total bobas consumed since Jan 1, 2021: </p>
-            <p class = "total-num">{{ stats.total_orders }}</p>
-            <p class = "2023">total bobas consumed in 2023 so far:</p>
-            <p class = "2023-num">{{ stats.orders_23 }}</p>
-            <p class = "mango">percentage of boba consumed with mango popping bubbles: </p>
-            <p class = "mango-num">{{ stats.orders_with_mpopping / stats.total_orders * 100 }}%</p>
-            <p class = "ratio">percentage of mango flavored popping bubbles given that order contained popping bubbles:</p>
-            <p class = "ratio-num">{{ stats.orders_with_mpopping / stats.orders_with_popping *100 }}%</p>
-            <p class = "frequent">most frequented bubble tea store to date:</p>
-            <p class = "frequent-num">{{ stats.most_frequented_store }}</p>
+            <p class = "label">total bobas consumed since Jan 1, 2021: </p>
+            <p class = "num">{{ stats.total_orders }}</p>
+            <p class = "label">total bobas consumed in 2023 so far:</p>
+            <p class = "num">{{ stats.orders_23 }}</p>
+            <p class = "label">percentage of boba consumed with mango popping bubbles: </p>
+            <p class = "num">{{ stats.orders_with_mpopping / stats.total_orders * 100 }}%</p>
+            <p class = "label">percentage of mango flavored popping bubbles given that order contained popping bubbles:</p>
+            <p class = "num">{{ stats.orders_with_mpopping / stats.orders_with_popping *100 }}%</p>
+            <p class = "label">most frequented bubble tea store to date:</p>
+            <p class = "num">{{ stats.most_frequented_store }}, with {{ stats.most_frequented_store_num }} visits</p>
+            <p class = "label">most common order at {{ stats.most_frequented_store }}:</p>
+            <p class = "num">{{ stats.bystore_flavor }}, with {{ stats.bystore_flavor_num }} orders</p>
         </div>
     </body>
 </html>

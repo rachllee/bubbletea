@@ -16,7 +16,9 @@ June 11 2023|Ding Tea|Peach Black Tea|mango popping
 June 23 2023|Tea Gather|Peach Black Tea|mango popping
 June 25 2023|ShareTea|Coffee Ice|ice cream
 June 30 2023|ShareTea|Peach Kiwi Oolong 
-July 10 2023|Kung Fu|Yakult Peach-add|mango popping 
+July 10 2023|Kung Fu|Yakult Peach-ade|mango popping
+August 11 2023|Mogee Tea|Mango Tea Slush|peach popping
+August 16 2023|Kung Fu|Pineapple Black|mango popping
 January 14 2022|Kung Fu|Yakult Peach-ade
 January 21 2022|Moose|Ice Cream Tea
 January 27 2022|Ding Tea|Peach Yakult|mango popping

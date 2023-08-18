@@ -46,6 +46,7 @@ def calculate_statistics():
     orders_sharetea = df['Store'].str.contains('Share', case=False, na=False).sum()
 
     store_orders = {
+        'Kung Fu': orders_kungfu,
         'Moose': orders_moose,
         'Ding': orders_ding,
         'Tea Gather': orders_teagather,
@@ -54,8 +55,16 @@ def calculate_statistics():
     }
 
     most_frequented_store = max(store_orders, key=store_orders.get)
+    most_frequented_store_num = store_orders[most_frequented_store]
 
-    print("Total orders:", total_orders)
+    
+    store_df = df[df['Store'] == most_frequented_store]
+    flavor_counts = store_df['Flavor'].value_counts()
+    bystore_flavor = flavor_counts.idxmax()
+    bystore_flavor_num = flavor_counts.max()
+
+    print(bystore_flavor)
+    print(bystore_flavor_num)
 
     return {
                             'total_orders': total_orders,
@@ -89,6 +98,9 @@ def calculate_statistics():
                             'orders_teagather': orders_teagather,
                             'orders_teado': orders_teado,
                             'orders_sharetea': orders_sharetea,
-                            'most_frequented_store': most_frequented_store
+                            'most_frequented_store': most_frequented_store,
+                            'most_frequented_store_num': most_frequented_store_num,
+                            'bystore_flavor': bystore_flavor,
+                            'bystore_flavor_num': bystore_flavor_num
     }
 
